@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'Animesite'`, () => {
+  it(`should have as title 'MyAnime'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('Animesite');
+    expect(app.title).toEqual('MyAnime');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('Animesite app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('MyAnime app is running!');
   });
 });
