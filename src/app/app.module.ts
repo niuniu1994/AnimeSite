@@ -70,8 +70,9 @@ import { FooterComponent } from './components/footer/footer.component';
     MatProgressSpinnerModule,
     NgImageSliderModule,
 
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule {}
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
+  })
+  export class AppModule {
+  }
