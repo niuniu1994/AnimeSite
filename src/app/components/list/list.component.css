@@ -1,0 +1,14 @@
+.content {
+  padding-left: 15%;
+  padding-right: 15%;
+  text-align: center;
+}
+
+.content > mat-card {
+  height: 250px;
+  width: 170px;
+}
+pagination-controls {
+  padding: 20px;
+  font-size: xx-large;
+}

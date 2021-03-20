@@ -1,0 +1,20 @@
+<div class="content">
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div fxFlex="20%" fxFlex.xs="100%" fxFlex.sm="33%"
+         *ngFor="let anime of animes | paginate: {itemsPerPage:50,currentPage: p, totalItems: 1000 }">
+      <mat-card class="mat-elevation-z4">
+        <mat-card-header>
+          <mat-card-title>{{anime.title}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="{{anime.image_url}}">
+      </mat-card>
+    </div>
+  </div>
+  <pagination-controls
+    (pageChange)="pageChanged($event)"
+  >
+  </pagination-controls>
+</div>
+
+
+
