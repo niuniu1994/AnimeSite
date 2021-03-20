@@ -1,0 +1,72 @@
+<div class="search_component">
+  <div fxLayout="column" fxLayoutAlign=" center">
+
+    <div class="search_bar" fxLayout="row" fxLayoutAlign="center">
+      <button class="btn_filter" mat-raised-button color="accent" [matMenuTriggerFor]="features">
+        <mat-icon>filter_list</mat-icon>
+        Filter
+      </button>
+
+      <mat-menu #features="matMenu">
+        <button mat-menu-item [matMenuTriggerFor]="types_menu">Types</button>
+        <button mat-menu-item [matMenuTriggerFor]="genres_menu">Genres</button>
+        <button mat-menu-item [matMenuTriggerFor]="status_menu">Status</button>
+        <button mat-menu-item [matMenuTriggerFor]="ratings_menu">Ratings</button>
+      </mat-menu>
+      <div class="ng-autocomplete">
+        <ng-autocomplete
+          [data]="options"
+          [searchKeyword]="keyword"
+          placeholder="Enter the anime name"
+          (selected)='selectEvent($event)'
+          (inputChanged)='onChangeSearch($event)'
+          (inputFocused)='onFocused($event)'
+          historyIdentifier="options"
+          [itemTemplate]="itemTemplate"
+          [notFoundTemplate]="notFoundTemplate">
+        </ng-autocomplete>
+
+        <ng-template #itemTemplate let-item>
+          <a [innerHTML]="item.title" (click)="changeSearchText($event)"></a>
+        </ng-template>
+
+        <ng-template #notFoundTemplate let-notFound>
+          <div [innerHTML]="notFound"></div>
+        </ng-template>
+      </div>
+      <button mat-raised-button color="accent" [routerLink]="['/list',this.searchText,ParamsBuilder()]" routerLinkActive="active" ><mat-icon>search</mat-icon></button>
+    </div>
+    <div class="tags" fxLayout="row" fxLayoutAlign="start">
+      <mat-chip-list aria-label="Fish selection">
+        <mat-chip  *ngFor="let fea of featuresMap | keyvalue"
+                   (removed)="remove(fea.key)"
+                  [removable]="removable" >
+          <span *ngIf="fea.key !== 'genre'''"> {{fea.key}} : {{fea.value}}</span>
+          <span *ngIf="fea.key === 'genre'">{{fea.key}} : {{getGenreByValue(fea.value)}}</span>
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+  </div>
+
+</div>
+
+<mat-menu #types_menu="matMenu">
+  <button name="type" mat-menu-item *ngFor="let type of types;" value="{{type}}" (click)="addFeature($event)">
+    {{type | titlecase}}
+  </button>
+</mat-menu>
+
+<mat-menu #genres_menu="matMenu">
+  <button name="genre" mat-menu-item *ngFor="let genre of genres | keyvalue" value="{{genre.value}}"
+          (click)="addFeature($event)">{{genre.key| titlecase}}</button>
+
+</mat-menu>
+
+<mat-menu #ratings_menu="matMenu">
+  <button name="rated" mat-menu-item *ngFor="let rat of ratings" value="{{rat}}" (click)="addFeature($event)">{{rat}}</button>
+</mat-menu>
+
+<mat-menu #status_menu="matMenu">
+  <button name="status" mat-menu-item *ngFor="let sta of status"  (click)="addFeature($event)" value="{{sta}}">{{sta | titlecase}}</button>
+</mat-menu>
