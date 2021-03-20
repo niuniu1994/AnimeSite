@@ -5,7 +5,7 @@ import {ListComponent} from './components/list/list.component';
 import {SearchComponent} from './components/search/search.component';
 
 const routes: Routes = [
-  {path: 'detail', component: DetailComponent},
+  {path: 'detail/:id', component: DetailComponent},
   {path: '', component: SearchComponent},
   {path: 'list/:searchText/:params', component: ListComponent}
 ];

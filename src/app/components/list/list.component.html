@@ -6,13 +6,11 @@
         <mat-card-header>
           <mat-card-title>{{anime.title}}</mat-card-title>
         </mat-card-header>
-        <img mat-card-image src="{{anime.image_url}}">
+        <img  mat-card-image src="{{anime.image_url}}" [routerLink]="['/detail',anime.mal_id]" routerLinkActive="true">
       </mat-card>
     </div>
   </div>
-  <pagination-controls
-    (pageChange)="pageChanged($event)"
-  >
+  <pagination-controls (pageChange)="pageChanged($event)">
   </pagination-controls>
 </div>
 

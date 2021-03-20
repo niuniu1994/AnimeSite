@@ -2,8 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {IAnime} from '../entity/IAnime';
 import {AnimeService} from '../../services/anime.service';
-import {Observable} from 'rxjs';
-import {IResponse} from '../entity/IResponse';
 
 @Component({
   selector: 'app-list',
@@ -16,8 +14,7 @@ export class ListComponent implements OnInit {
   public animes: IAnime[] = [];
   p: string | number;
 
-  constructor(private activatedRoute: ActivatedRoute, private animeService: AnimeService) {
-  }
+  constructor(private activatedRoute: ActivatedRoute, private animeService: AnimeService) {}
 
   ngOnInit(): void {
     // get params from route
