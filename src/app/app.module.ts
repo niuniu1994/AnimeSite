@@ -20,6 +20,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatChipsModule} from '@angular/material/chips';
 import { DetailComponent } from './components/detail/detail.component';
 import { ListComponent } from './components/list/list.component';
+import {MatCardModule} from '@angular/material/card';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -47,6 +49,8 @@ import { ListComponent } from './components/list/list.component';
     MatButtonModule,
     MatFormFieldModule,
     MatChipsModule,
+    MatCardModule,
+    NgxPaginationModule,
 
   ],
   providers: [],
