@@ -1,1 +1,13 @@
-<p>detail works!</p>
+<div class="container">
+  <div fxLayout="column">
+    <div fxLayout="row">
+      <img src="{{anime.image_url}}">
+      <p>{{anime.synopsis}}</p>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center">
+      <app-youtube-player [videoId]="anime.trailer_url | videoId"></app-youtube-player>
+    </div>
+  </div>
+
+</div>
+
