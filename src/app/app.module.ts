@@ -22,6 +22,9 @@ import { DetailComponent } from './components/detail/detail.component';
 import { ListComponent } from './components/list/list.component';
 import {MatCardModule} from '@angular/material/card';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {YouTubePlayerModule} from '@angular/youtube-player';
+import { YoutubePlayerComponent } from './components/youtube-player/youtube-player.component';
+import { VideoIdPipe } from './util/video-id.pipe';
 
 
 @NgModule({
@@ -31,6 +34,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     SearchComponent,
     DetailComponent,
     ListComponent,
+    YoutubePlayerComponent,
+    VideoIdPipe,
   ],
   imports: [
     AutocompleteLibModule,
@@ -51,6 +56,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     MatChipsModule,
     MatCardModule,
     NgxPaginationModule,
+    YouTubePlayerModule,
 
   ],
   providers: [],

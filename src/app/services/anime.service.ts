@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {IResponse} from '../components/entity/IResponse';
+import {IAnimeDetailResponse} from '../components/entity/ianime-detail-response';
 
 
 @Injectable({
@@ -30,5 +31,11 @@ export class AnimeService {
     return this.httpClient.get<IResponse>(this.url);
   }
 
+  public getAnimeDetail(id: string): Observable<IAnimeDetailResponse>{
+    if (id !== '') {
+      this.url = `https://api.jikan.moe/v3/anime/${id}`;
+      return this.httpClient.get<IAnimeDetailResponse>(this.url);
+    }
+  }
 
 }
