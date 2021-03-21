@@ -34,7 +34,8 @@
           <div [innerHTML]="notFound"></div>
         </ng-template>
       </div>
-      <button mat-raised-button color="accent" [routerLink]="['/list',this.searchText,ParamsBuilder()]" routerLinkActive="active" ><mat-icon>search</mat-icon></button>
+      <button mat-raised-button color="accent" (click)="openDialog()"><mat-icon>camera</mat-icon></button>
+      <button mat-raised-button color="accent" [routerLink]="['/list',this.searchText,ParamsBuilder()]" routerLinkActive="active"><mat-icon>search</mat-icon></button>
     </div>
     <div class="tags" fxLayout="row" fxLayoutAlign="start">
       <mat-chip-list aria-label="Fish selection">

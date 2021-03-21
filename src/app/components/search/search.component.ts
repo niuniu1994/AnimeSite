@@ -4,6 +4,8 @@ import {Subject} from 'rxjs';
 import {debounceTime, filter} from 'rxjs/operators';
 import {AnimeService} from '../../services/anime.service';
 import {FormBuilder} from '@angular/forms';
+import {MatDialog} from '@angular/material/dialog';
+import {SearchImageComponent} from '../search-image/search-image.component';
 
 @Component({
   selector: 'app-search',
@@ -46,7 +48,7 @@ export class SearchComponent implements OnInit {
   public featuresMap: Map<string, string> = new Map<string, string>(); // features added from filter
   public removable = true;
 
-  constructor(private fb: FormBuilder, private animeService: AnimeService) {
+  constructor(private fb: FormBuilder, private dialog: MatDialog, private animeService: AnimeService) {
     // download data and assign it to autocomplete options
     this.subject$.pipe(
       filter(x => x.toString().length >= 3),
@@ -109,5 +111,14 @@ export class SearchComponent implements OnInit {
   changeSearchText(evt): void {
     this.searchText = evt.target.innerHTML.replace('<b>', '').replace('</b>', '');
     console.log(this.searchText);
+  }
+
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(SearchImageComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }

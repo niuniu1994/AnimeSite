@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {IResponse} from '../components/entity/IResponse';
 import {IAnimeDetailResponse} from '../components/entity/ianime-detail-response';
+import {IAnimeImageResponse} from '../components/entity/ianime-image-response';
 
 
 @Injectable({
@@ -15,7 +16,6 @@ export class AnimeService {
   }
 
 
-
   // autocomplete search bar according to the input text
   public autoCompleteByText(name: string): Observable<IResponse> {
     this.url = `https://api.jikan.moe/v3/search/anime?q=${name}&page=1`;
@@ -24,18 +24,23 @@ export class AnimeService {
 
   // submit search data and get response
   public searchAnimeByText(params: string, name: string): Observable<IResponse> {
-    if (name === ''){
+    if (name === '') {
       name = '&order_by=members&sort=desc';
     }
     this.url = `https://api.jikan.moe/v3/search/anime?q=${name}${params}`;
     return this.httpClient.get<IResponse>(this.url);
   }
 
-  public getAnimeDetail(id: string): Observable<IAnimeDetailResponse>{
+  public getAnimeDetail(id: string): Observable<IAnimeDetailResponse> {
     if (id !== '') {
       this.url = `https://api.jikan.moe/v3/anime/${id}`;
       return this.httpClient.get<IAnimeDetailResponse>(this.url);
     }
+  }
+
+  public searchAnimeImage(data: string): Observable<IAnimeImageResponse> {
+    this.url = 'https://trace.moe/api/search';
+    return this.httpClient.post<IAnimeImageResponse>(this.url, JSON.stringify({image: data}));
   }
 
 }
