@@ -1,0 +1,15 @@
+<div fxLayout="column">
+  <h2>Please upload you image (jpg,png..)</h2>
+  <input type="file" name="image" accept=".png, .jpg, .jpeg" (change)="uploadFile($event)"/>
+  <p style="color: red">{{alert}}</p>
+  <img src="{{imageUrl}}">
+  <mat-spinner *ngIf="loading"></mat-spinner>
+  <mat-list>
+    <mat-list *ngFor="let anime of animes" ><a [routerLink]="['/detail',anime.mal_id]" [mat-dialog-close]><mat-icon>label</mat-icon>{{anime.title_english}}</a></mat-list>
+  </mat-list>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="search()">Search</button>
+    <button mat-button [mat-dialog-close]>Cancel</button>
+  </div>
+</div>
