@@ -25,7 +25,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {YouTubePlayerModule} from '@angular/youtube-player';
 import { YoutubePlayerComponent } from './components/youtube-player/youtube-player.component';
 import { VideoIdPipe } from './util/video-id.pipe';
-
+import { SearchImageComponent } from './components/search-image/search-image.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -36,8 +38,10 @@ import { VideoIdPipe } from './util/video-id.pipe';
     ListComponent,
     YoutubePlayerComponent,
     VideoIdPipe,
+    SearchImageComponent,
   ],
   imports: [
+    MatDialogModule,
     AutocompleteLibModule,
     HttpClientModule,
     FlexLayoutModule,
@@ -57,6 +61,7 @@ import { VideoIdPipe } from './util/video-id.pipe';
     MatCardModule,
     NgxPaginationModule,
     YouTubePlayerModule,
+    MatProgressSpinnerModule,
 
   ],
   providers: [],
