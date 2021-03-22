@@ -28,6 +28,10 @@ import { VideoIdPipe } from './util/video-id.pipe';
 import { SearchImageComponent } from './components/search-image/search-image.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { HomeComponent } from './components/home/home.component';
+import {NgImageSliderModule} from 'ng-image-slider';
+import { FooterComponent } from './components/footer/footer.component';
+
 
 @NgModule({
   declarations: [
@@ -39,6 +43,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     YoutubePlayerComponent,
     VideoIdPipe,
     SearchImageComponent,
+    HomeComponent,
+    FooterComponent,
   ],
   imports: [
     MatDialogModule,
@@ -62,6 +68,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     NgxPaginationModule,
     YouTubePlayerModule,
     MatProgressSpinnerModule,
+    NgImageSliderModule,
 
   ],
   providers: [],
