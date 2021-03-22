@@ -1,13 +1,14 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {DetailComponent} from './components/detail/detail.component';
 import {ListComponent} from './components/list/list.component';
 import {SearchComponent} from './components/search/search.component';
+import {HomeComponent} from './components/home/home.component';
 
 const routes: Routes = [
   {path: 'detail/:id', component: DetailComponent},
-  {path: '', component: SearchComponent},
-  {path: 'home', component: SearchComponent},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: 'home', component: HomeComponent},
   {path: 'list/:searchText/:params', component: ListComponent}
 ];
 
@@ -15,4 +16,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

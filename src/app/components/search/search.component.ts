@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {IAnime} from '../entity/IAnime';
+import {IAnime} from '../../entity/IAnime';
 import {Subject} from 'rxjs';
 import {debounceTime, filter} from 'rxjs/operators';
 import {AnimeService} from '../../services/anime.service';

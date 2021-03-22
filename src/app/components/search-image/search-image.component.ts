@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Idoc} from '../entity/ianime-image-response';
+import {Idoc} from '../../entity/ianime-image-response';
 import {AnimeService} from '../../services/anime.service';
 
 @Component({
