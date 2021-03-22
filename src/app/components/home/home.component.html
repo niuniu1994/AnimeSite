@@ -1,0 +1,75 @@
+<app-search></app-search>
+
+<div class="slider-container">
+  <div class="separator">
+    <h2 class="separator-title">Airing</h2>
+    <div class="flexed-line"></div>
+    <div>
+      <button mat-button  class="separator-actions-button" (click)="prevImageClickAiring()"><mat-icon inline="true">navigate_before</mat-icon>
+      </button>
+      <button  mat-button class="separator-actions-button" (click)="nextImageClickAiring()"><mat-icon inline="true">navigate_next</mat-icon>
+      </button>
+    </div>
+  </div>
+  <ng-image-slider #sliderAiring
+                   (imageClick)="clickAiring($event)"
+                   [routerLink]="['/detail',malId]" routerLinkActive="true"
+                   [images]="airing"
+                   [infinite]="false"
+                   [showArrow]="false"
+                   [slideImage]="4"
+                   [autoSlide]="1"
+                   [imagePopup]="false"
+                   [imageSize]="{width: '16.4%', height: 600}"
+                   slideImage="1"></ng-image-slider>
+</div>
+<div class="slider-container">
+  <div class="separator">
+    <h2 class="separator-title">Today release</h2>
+    <div class="flexed-line"></div>
+    <div>
+      <button mat-button  class="separator-actions-button" (click)="prevImageClickToday()"><mat-icon inline="true">navigate_before</mat-icon>
+      </button>
+      <button  mat-button class="separator-actions-button" (click)="nextImageClickToday()"><mat-icon inline="true">navigate_next</mat-icon>
+      </button>
+    </div>
+  </div>
+  <ng-image-slider #sliderToday
+                   (imageClick)="clickToday($event)"
+                   [routerLink]="['/detail',malId]" routerLinkActive="true"
+                   [images]="today"
+                   [slideImage]="4"
+                   [infinite]="false"
+                   [showArrow]="false"
+                   [autoSlide]="1"
+                   [imagePopup]="false"
+                   [imageSize]="{width: '16.4%', height: 600}"
+                   slideImage="1"></ng-image-slider>
+</div>
+<div class="slider-container">
+  <div class="separator">
+    <h2 class="separator-title">TOP UPCOMING</h2>
+    <div class="flexed-line"></div>
+    <div>
+      <button mat-button  class="separator-actions-button" (click)="prevImageClickRelease()"><mat-icon inline="true">navigate_before</mat-icon>
+      </button>
+      <button  mat-button class="separator-actions-button" (click)="nextImageClickRelease()"><mat-icon inline="true">navigate_next</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <ng-image-slider #slideRelease
+                   (imageClick)="clickUpcoming($event)"
+                   [routerLink]="['/detail',malId]" routerLinkActive="true"
+                   [images]="upcoming"
+                   [slideImage]="4"
+                   [infinite]="false"
+                   [showArrow]="false"
+                   [autoSlide]="1"
+                   [imagePopup]="false"
+                   [imageSize]="{width: '16.4%', height: 600}"
+                   slideImage="1"></ng-image-slider>
+</div>
+
+
+
