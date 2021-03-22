@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {AnimeService} from '../../services/anime.service';
-import {IAnimeDetailResponse} from '../entity/ianime-detail-response';
+import {IAnimeDetailResponse} from '../../entity/ianime-detail-response';
 
 @Component({
   selector: 'app-detail',

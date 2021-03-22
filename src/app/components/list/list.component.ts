@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {IAnime} from '../entity/IAnime';
+import {IAnime} from '../../entity/IAnime';
 import {AnimeService} from '../../services/anime.service';
 
 @Component({
