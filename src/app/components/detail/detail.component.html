@@ -1,13 +1,48 @@
 <div class="container">
-  <div fxLayout="column">
+  <div class="cod" fxLayout="column">
+    <h1><b>{{anime.title}}</b></h1>
+    <h2 style="color: #738695"><b>{{anime.title_japanese}}</b></h2>
+    <hr>
     <div fxLayout="row">
+      <div fxLayout="column">
       <img src="{{anime.image_url}}">
-      <p>{{anime.synopsis}}</p>
+        <p style="margin-top: 10px"><b> First Premiered : </b>{{anime.premiered}}</p>
+        <p><b> Broadcast: </b>{{anime.broadcast}} </p>
+      </div>
+      <div fxLayout="column" style="margin-left: 2%">
+        <p style="font-size: 20px" class="score"><b>Score : </b><span style="background-color: #ffd740">{{anime.score}} / 10</span></p>
+        <p><b>Type : </b>{{anime.type}}
+           <b style="margin-left: 20px">Status : </b>{{anime.status}}
+           <b style="margin-left: 20px">Age : </b>{{anime.rating}}
+        </p>
+        <h2>Synopsis</h2>
+        <p> {{anime.synopsis}}</p>
+      </div>
     </div>
     <div fxLayout="row" fxLayoutAlign="center">
       <app-youtube-player [videoId]="anime.trailer_url | videoId"></app-youtube-player>
     </div>
   </div>
-
 </div>
+
+<style>
+  h1 {
+    margin-bottom: 0%;
+  }
+  hr{
+    margin-top: 0px;
+    width: 100%;
+    height: 2px;
+    background-color: #919191;
+    border: none; /*on supprime le style par défaut*/
+  }
+  .cod {
+    border-left: 1px solid #919191;
+    border-right: 1px solid #919191;
+  }
+  h2 {
+    text-decoration: underline;
+  }
+
+</style>
 
