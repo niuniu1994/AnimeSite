@@ -10,4 +10,5 @@ export interface IAnimeDetailResponse {
   synopsis: string;
   premiered: string;
   broadcast: string;
+  score: string;
 }
