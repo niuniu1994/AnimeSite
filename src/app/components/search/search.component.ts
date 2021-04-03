@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {IAnime} from '../../entity/IAnime';
-import {Subject} from 'rxjs';
+import {Subject, Subscription} from 'rxjs';
 import {debounceTime, filter} from 'rxjs/operators';
 import {AnimeService} from '../../services/anime.service';
 import {FormBuilder} from '@angular/forms';
@@ -12,7 +12,7 @@ import {SearchImageComponent} from '../search-image/search-image.component';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, OnDestroy {
   public options: IAnime[] = [];
   private subject$ = new Subject();
   public keyword = 'title'; // autocomplete search key word
@@ -47,10 +47,11 @@ export class SearchComponent implements OnInit {
   ]); // anime genres
   public featuresMap: Map<string, string> = new Map<string, string>(); // features added from filter
   public removable = true;
+  private subAnime: Subscription;
 
   constructor(private fb: FormBuilder, private dialog: MatDialog, private animeService: AnimeService) {
     // download data and assign it to autocomplete options
-    this.subject$.pipe(
+    this.subAnime = this.subject$.pipe(
       filter(x => x.toString().length >= 3),
       debounceTime(400)
     ).subscribe(x => this.animeService.autoCompleteByText(x.toString()).subscribe(z => {
@@ -120,5 +121,9 @@ export class SearchComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subAnime.unsubscribe();
   }
 }

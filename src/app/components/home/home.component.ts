@@ -1,7 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {AnimeService} from '../../services/anime.service';
 import {IAnime} from '../../entity/IAnime';
 import {NgImageSliderComponent} from 'ng-image-slider';
+import {Subscription} from 'rxjs';
 
 interface IImage {
   thumbImage: string;
@@ -14,12 +15,16 @@ interface IImage {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   public malId: string;
   public airing: IImage[] = [];
   public upcoming: IImage[] = [];
   public today: IImage[] = [];
   private date = new Date();
+  private subAiring: Subscription;
+  private subUpComping: Subscription;
+  private subToday: Subscription;
+
   @ViewChild('sliderAiring') sliderAiring: NgImageSliderComponent;
   @ViewChild('sliderToday') sliderToday: NgImageSliderComponent;
   @ViewChild('slideRelease') slideRelease: NgImageSliderComponent;
@@ -30,10 +35,9 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.animeService.getAnimeAiring().subscribe(x => this.airing = this.convert(x.top));
-    this.animeService.getAnimeUpcoming().subscribe(x => this.upcoming = this.convert(x.top));
-    console.log(this.weekDay[this.date.getDay()].toLowerCase());
-    this.animeService.getAnimeToday().subscribe(x => this.today = this.convert(x[this.weekDay[this.date.getDay()].toLowerCase()]));
+    this.subAiring = this.animeService.getAnimeAiring().subscribe(x => this.airing = this.convert(x.top));
+    this.subUpComping = this.animeService.getAnimeUpcoming().subscribe(x => this.upcoming = this.convert(x.top));
+    this.subToday = this.animeService.getAnimeToday().subscribe(x => this.today = this.convert(x[this.weekDay[this.date.getDay()].toLowerCase()]));
   }
 
   private convert(animes: IAnime[]): IImage[] {
@@ -58,27 +62,9 @@ export class HomeComponent implements OnInit {
     this.malId = this.upcoming[evt].mal_id;
   }
 
-  prevImageClickAiring(): void {
-    this.sliderAiring.prev();
-  }
-
-  nextImageClickAiring(): void {
-    this.sliderAiring.next();
-  }
-
-  prevImageClickToday(): void {
-    this.sliderToday.prev();
-  }
-
-  nextImageClickToday(): void {
-    this.sliderToday.next();
-  }
-
-  nextImageClickRelease(): void {
-    this.slideRelease.next();
-  }
-
-  prevImageClickRelease(): void {
-    this.slideRelease.prev();
+  ngOnDestroy(): void {
+    this.subAiring.unsubscribe();
+    this.subToday.unsubscribe();
+    this.subUpComping.unsubscribe();
   }
 }
