@@ -11,15 +11,16 @@ import {IResponse2} from '../entity/iresponse2';
   providedIn: 'root'
 })
 export class AnimeService {
-  private url: string;
+
+  private readonly baseUrl = 'https://api.jikan.moe/v3';
 
   constructor(private httpClient: HttpClient) {
   }
 
   // autocomplete search bar according to the input text
   public autoCompleteByText(name: string): Observable<IResponse> {
-    this.url = `https://api.jikan.moe/v3/search/anime?q=${name}&page=1`;
-    return this.httpClient.get<IResponse>(this.url);
+    const url = `${this.baseUrl}/search/anime?q=${name}&page=1`;
+    return this.httpClient.get<IResponse>(url);
   }
 
   // submit search data and get response
@@ -27,36 +28,40 @@ export class AnimeService {
     if (name === '') {
       name = '&order_by=members&sort=desc';
     }
-    this.url = `https://api.jikan.moe/v3/search/anime?q=${name}${params}`;
-    return this.httpClient.get<IResponse>(this.url);
+    const url = `${this.baseUrl}/search/anime?q=${name}${params}`;
+    return this.httpClient.get<IResponse>(url);
   }
 
+  // resposne anime detail
   public getAnimeDetail(id: string): Observable<IAnimeDetailResponse> {
     if (id !== '') {
-      this.url = `https://api.jikan.moe/v3/anime/${id}`;
-      return this.httpClient.get<IAnimeDetailResponse>(this.url);
+      const url = `${this.baseUrl}/anime/${id}`;
+      return this.httpClient.get<IAnimeDetailResponse>(url);
     }
   }
 
   public searchAnimeImage(data: string): Observable<IAnimeImageResponse> {
-    this.url = 'https://trace.moe/api/search';
-    return this.httpClient.post<IAnimeImageResponse>(this.url, JSON.stringify({image: data}));
+    const url = 'https://trace.moe/api/search';
+    return this.httpClient.post<IAnimeImageResponse>(url, JSON.stringify({image: data}));
   }
 
+  // service for main page image slider
   public getAnimeAiring(): Observable<IResponse2> {
-    this.url = 'https://api.jikan.moe/v3/top/anime/1/airing';
-    return this.httpClient.get<IResponse2>(this.url);
+    const url = `${this.baseUrl}/top/anime/1/airing`;
+    return this.httpClient.get<IResponse2>(url);
   }
 
+  // service for main page image slider
   public getAnimeUpcoming(): Observable<IResponse2> {
-    this.url = 'https://api.jikan.moe/v3/top/anime/1/upcoming';
-    return this.httpClient.get<IResponse2>(this.url);
+    const url = `${this.baseUrl}/top/anime/1/upcoming`;
+    return this.httpClient.get<IResponse2>(url);
   }
 
+  // service for main page image slider
   public getAnimeToday(): Observable<any> {
     const day = new Date();
     const weekDay = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    this.url = `https://api.jikan.moe/v3/schedule/${weekDay[day.getDay()]}`;
-    return this.httpClient.get<any>(this.url);
+    const url = `${this.baseUrl}/schedule/${weekDay[day.getDay()]}`;
+    return this.httpClient.get<any>(url);
   }
 }

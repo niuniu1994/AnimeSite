@@ -61,7 +61,6 @@
 <mat-menu #genres_menu="matMenu">
   <button name="genre" mat-menu-item *ngFor="let genre of genres | keyvalue" value="{{genre.value}}"
           (click)="addFeature($event)">{{genre.key| titlecase}}</button>
-
 </mat-menu>
 
 <mat-menu #ratings_menu="matMenu">

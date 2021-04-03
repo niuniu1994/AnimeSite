@@ -1,20 +1,24 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {IAnime} from '../../entity/IAnime';
 import {AnimeService} from '../../services/anime.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit, OnDestroy {
   public searchText: string;
   public params: string;
   public animes: IAnime[] = [];
+  private subActivetedRoute: Subscription;
+  private subAnimes: Subscription;
   p: string | number;
 
-  constructor(private activatedRoute: ActivatedRoute, private animeService: AnimeService) {}
+  constructor(private activatedRoute: ActivatedRoute, private animeService: AnimeService) {
+  }
 
   ngOnInit(): void {
     // get params from route
@@ -36,5 +40,10 @@ export class ListComponent implements OnInit {
       this.animes = z.results;
     });
     this.p = evt;
+  }
+
+  ngOnDestroy(): void {
+    this.subActivetedRoute.unsubscribe();
+    this.subAnimes.unsubscribe();
   }
 }

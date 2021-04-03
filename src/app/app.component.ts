@@ -11,23 +11,13 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  mediaSub: Subscription;
-  deviceXs: boolean;
   constructor(public mediaObserver: MediaObserver) {
   }
 
   ngOnInit(): void {
-    // get media device type
-    this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {
-      console.log(result.mqAlias);
-      this.deviceXs = result.mqAlias === 'xs';
-      }
-    );
-
   }
 
   ngOnDestroy(): void {
-    this.mediaSub.unsubscribe();
   }
 
 

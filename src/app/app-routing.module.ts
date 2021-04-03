@@ -6,8 +6,8 @@ import {SearchComponent} from './components/search/search.component';
 import {HomeComponent} from './components/home/home.component';
 
 const routes: Routes = [
-  {path: 'detail/:id', component: DetailComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: 'detail/:id', component: DetailComponent},
   {path: 'home', component: HomeComponent},
   {path: 'list/:searchText/:params', component: ListComponent}
 ];

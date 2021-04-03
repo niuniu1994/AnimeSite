@@ -5,9 +5,9 @@
     <h2 class="separator-title">Airing</h2>
     <div class="flexed-line"></div>
     <div>
-      <button mat-button  class="separator-actions-button" (click)="prevImageClickAiring()"><mat-icon inline="true">navigate_before</mat-icon>
+      <button mat-button  class="separator-actions-button" (click)="this.sliderAiring.prev()"><mat-icon inline="true">navigate_before</mat-icon>
       </button>
-      <button  mat-button class="separator-actions-button" (click)="nextImageClickAiring()"><mat-icon inline="true">navigate_next</mat-icon>
+      <button  mat-button class="separator-actions-button" (click)="this.sliderAiring.next()"><mat-icon inline="true">navigate_next</mat-icon>
       </button>
     </div>
   </div>
@@ -20,7 +20,7 @@
                    [slideImage]="4"
                    [autoSlide]="1"
                    [imagePopup]="false"
-                   [imageSize]="{width: '19.5%', height: '50%'}"
+                   [imageSize]="{width: '19.5%', height: '30%'}"
                    slideImage="1"></ng-image-slider>
 </div>
 <div class="slider-container">
@@ -28,9 +28,9 @@
     <h2 class="separator-title">Today release</h2>
     <div class="flexed-line"></div>
     <div>
-      <button mat-button  class="separator-actions-button" (click)="prevImageClickToday()"><mat-icon inline="true">navigate_before</mat-icon>
+      <button mat-button  class="separator-actions-button" (click)="this.sliderToday.prev()"><mat-icon inline="true">navigate_before</mat-icon>
       </button>
-      <button  mat-button class="separator-actions-button" (click)="nextImageClickToday()"><mat-icon inline="true">navigate_next</mat-icon>
+      <button  mat-button class="separator-actions-button" (click)="this.sliderToday.next()"><mat-icon inline="true">navigate_next</mat-icon>
       </button>
     </div>
   </div>
@@ -43,7 +43,7 @@
                    [showArrow]="false"
                    [autoSlide]="1"
                    [imagePopup]="false"
-                   [imageSize]="{width: '19.5%', height: '50%'}"
+                   [imageSize]="{width: '19.5%', height: '30%'}"
                    slideImage="1"></ng-image-slider>
 </div>
 <div class="slider-container">
@@ -51,9 +51,9 @@
     <h2 class="separator-title">TOP UPCOMING</h2>
     <div class="flexed-line"></div>
     <div>
-      <button mat-button  class="separator-actions-button" (click)="prevImageClickRelease()"><mat-icon inline="true">navigate_before</mat-icon>
+      <button mat-button  class="separator-actions-button" (click)="this.slideRelease.prev()"><mat-icon inline="true">navigate_before</mat-icon>
       </button>
-      <button  mat-button class="separator-actions-button" (click)="nextImageClickRelease()"><mat-icon inline="true">navigate_next</mat-icon>
+      <button  mat-button class="separator-actions-button" (click)="this.slideRelease.next()"><mat-icon inline="true">navigate_next</mat-icon>
       </button>
     </div>
   </div>
@@ -67,7 +67,7 @@
                    [showArrow]="false"
                    [autoSlide]="1"
                    [imagePopup]="false"
-                   [imageSize]="{width: '19.5%', height: '50%'}"
+                   [imageSize]="{width: '19.5%', height: '30%'}"
                    slideImage="1"></ng-image-slider>
 </div>
 

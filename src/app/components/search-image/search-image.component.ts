@@ -21,17 +21,12 @@ export class SearchImageComponent implements OnInit {
   }
 
   private include(allowedTypes: string[], type: string): boolean {
-    for (const x of allowedTypes) {
-      if (x === type) {
-        return true;
-      }
-    }
-    return false;
+    return allowedTypes.includes(type);
   }
 
   uploadFile(event): void {
     const reader = new FileReader(); // HTML5 FileReader API
-    if (event.target.files && event.target.files[0]) {
+    if (event.target.files?.length && event.target.files[0]) {
       const allowedTypes = ['image/png', 'image/jpeg'];
       const maxSize = 1_048_576 * 10;
       const file = event.target.files[0];
