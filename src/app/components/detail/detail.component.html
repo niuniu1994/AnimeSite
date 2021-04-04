@@ -6,11 +6,11 @@
     <div fxLayout="row">
       <div fxLayout="column">
       <img src="{{anime.image_url}}">
-        <p style="margin-top: 10px"><b> First Premiered : </b>{{anime.premiered}}</p>
-        <p><b> Broadcast: </b>{{anime.broadcast}} </p>
+        <p style="margin-top: 10px"><b> First Premiered : </b>{{getPremiered()}}</p>
+        <p><b> Broadcast: </b>{{getBroadcast()}} </p>
       </div>
       <div fxLayout="column" style="margin-left: 2%">
-        <p style="font-size: 20px" class="score"><b>Score : </b><span style="background-color: #ffd740">{{anime.score}} / 10</span></p>
+        <p style="font-size: 20px" class="score"><b>Score : </b><span style="background-color: #ffd740">{{getScore()}}</span></p>
         <p><b>Type : </b>{{anime.type}}
            <b style="margin-left: 20px">Status : </b>{{anime.status}}
            <b style="margin-left: 20px">Age : </b>{{anime.rating}}
