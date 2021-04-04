@@ -1,13 +1,13 @@
 <div class="search_genre">
   <div fxLayout="column" fxLayoutAlign=" center">
     <mat-toolbar>
-    <mat-toolbar-row>
-    <mat-list-item *ngFor="let genre of genres2 | keyvalue">
-      <div *ngIf="genre.value" class="row-cols-md-1">
-      <button [routerLink]="['/list//',this.searchAnimeByGenre,getGenreByValue(genre.key)]" routerLinkActive="active">{{genre.key}}</button>
-      </div>
-    </mat-list-item>
-    </mat-toolbar-row>
+      <mat-toolbar-row>
+        <mat-list-item *ngFor="let genre of genres2 | keyvalue">
+          <div *ngIf="genre.value" class="row-cols-md-1">
+            <button [routerLink]="['/list',genre.value]" routerLinkActive="active">{{genre.key}}</button>
+          </div>
+        </mat-list-item>
+      </mat-toolbar-row>
     </mat-toolbar>
   </div>
 </div>
