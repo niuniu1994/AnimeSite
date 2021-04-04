@@ -2,7 +2,8 @@
   <h2>Please upload you image (jpg,png..)</h2>
   <input type="file" name="image" accept=".png, .jpg, .jpeg" (change)="uploadFile($event)"/>
   <p style="color: red">{{alert}}</p>
-  <img src="{{imageUrl}}">
+
+  <img *ngIf="imageUrl" width="200" height="250" src="{{imageUrl}}" >
   <mat-spinner *ngIf="loading"></mat-spinner>
   <mat-list>
     <mat-list *ngFor="let anime of animes" ><a [routerLink]="['/detail',anime.mal_id]" [mat-dialog-close]><mat-icon>label</mat-icon>{{anime.title_english}}</a></mat-list>

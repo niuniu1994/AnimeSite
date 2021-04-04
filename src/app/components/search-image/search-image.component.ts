@@ -10,7 +10,6 @@ import {AnimeService} from '../../services/anime.service';
 export class SearchImageComponent implements OnInit {
   public imageUrl: any;
   public alert: string;
-  public animeName: string;
   public animes: Idoc[];
   public loading = false;
 
