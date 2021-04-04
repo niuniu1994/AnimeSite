@@ -22,13 +22,13 @@ export class ListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     // get params from route
-    this.activatedRoute.paramMap.subscribe(x => {
+    this.subActivetedRoute = this.activatedRoute.paramMap.subscribe(x => {
         this.searchText = x.get('searchText');
         this.params = x.get('params');
       }
     );
     console.log(this.searchText + ' ' + this.params);
-    this.animeService.searchAnimeByText(this.params, this.searchText).subscribe(z => {
+    this.subAnimes = this.animeService.searchAnimeByText(this.params, this.searchText).subscribe(z => {
       this.animes = z.results;
       console.log(this.animes);
     });
