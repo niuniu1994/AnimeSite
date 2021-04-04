@@ -59,4 +59,13 @@ export class AnimeService {
     this.url = `https://api.jikan.moe/v3/schedule/${weekDay[day.getDay()]}`;
     return this.httpClient.get<any>(this.url);
   }
+
+  public searchAnimeByGenre(genre: string, id: number): Observable<IResponse> {
+    if (genre === '') {
+      genre = '&order_by=members&sort=desc';
+    }
+    this.url = `https://api.jikan.moe/v3/genre/anime?q=${genre}${id}`;
+    return this.httpClient.get<IResponse>(this.url);
+  }
+
 }

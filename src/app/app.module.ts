@@ -31,6 +31,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { HomeComponent } from './components/home/home.component';
 import {NgImageSliderModule} from 'ng-image-slider';
 import { FooterComponent } from './components/footer/footer.component';
+import { SearchGenreComponent } from './components/search-genre/search-genre.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { FooterComponent } from './components/footer/footer.component';
     SearchImageComponent,
     HomeComponent,
     FooterComponent,
+    SearchGenreComponent,
   ],
   imports: [
     MatDialogModule,
