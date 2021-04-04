@@ -64,4 +64,10 @@ export class AnimeService {
     const url = `${this.baseUrl}/schedule/${weekDay[day.getDay()]}`;
     return this.httpClient.get<any>(url);
   }
+
+  // service for top anime
+  public getAnimeRanks(): Observable<IResponse2> {
+    const url = `${this.baseUrl}/top/anime/1`;
+    return this.httpClient.get<IResponse2>(url);
+  }
 }
