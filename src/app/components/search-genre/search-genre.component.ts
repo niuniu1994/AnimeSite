@@ -9,8 +9,6 @@ import {AnimeService} from '../../services/anime.service';
 })
 export class SearchGenreComponent implements OnInit {
 
-  public searchAnimeByGenre = '&genre%3D';
-
   public genres2: Map<string, number> = new Map([
     ['action', 1],
     ['adventure', 2],
@@ -36,25 +34,10 @@ export class SearchGenreComponent implements OnInit {
     ['Romance', 22],
     ['School', 23]
   ]); // anime genres
-  public featuresMap: Map<string, string> = new Map<string, string>(); // features added from filter
+
 
   constructor() { }
 
-  public ParamsBuilder(): string {
-    let urlParams = '';
-    for (const [key, val] of this.featuresMap) {
-      urlParams += `&${key}=${val}`;
-    }
-    return urlParams;
-  }
-
-  getGenreByValue(value: string): string {
-    for (const [key, val] of this.genres2) {
-      if (val.toString() === value) {
-        return key;
-      }
-    }
-  }
 
   ngOnInit(): void {
   }
