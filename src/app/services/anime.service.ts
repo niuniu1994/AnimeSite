@@ -81,4 +81,9 @@ export class AnimeService {
     const url = `${this.baseUrl}/top/anime/${params}/movie`;
     return this.httpClient.get<IResponse2>(url);
   }
+
+  public searchAnimeByGenre(genre: string, page: string): Observable<IResponseGenre> {
+    const url = `${this.baseUrl}/genre/anime/${genre}/${page}`;
+    return this.httpClient.get<IResponseGenre>(url);
+  }
 }
