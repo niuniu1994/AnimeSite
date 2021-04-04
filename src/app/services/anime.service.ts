@@ -70,4 +70,10 @@ export class AnimeService {
     const url = `${this.baseUrl}/genre/anime/${genre}/${page}`;
     return this.httpClient.get<IResponseGenre>(url);
   }
+
+  // service for top anime
+  public getAnimeRanks(): Observable<IResponse2> {
+    const url = `${this.baseUrl}/top/anime/1`;
+    return this.httpClient.get<IResponse2>(url);
+  }
 }
