@@ -31,6 +31,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { HomeComponent } from './components/home/home.component';
 import {NgImageSliderModule} from 'ng-image-slider';
 import { FooterComponent } from './components/footer/footer.component';
+import {SearchGenreComponent} from './components/search-genre/search-genre.component';
 import { TopAnimeComponent } from './components/top-anime/top-anime.component';
 import {MatTableModule} from '@angular/material/table';
 
@@ -50,7 +51,8 @@ import {MatTableModule} from '@angular/material/table';
     SearchGenreComponent,
     TopAnimeComponent,
     TopAnimeComponent,
-    TopMovieComponent
+    TopMovieComponent,
+    SearchGenreComponent
   ],
   imports: [
     MatDialogModule,
@@ -75,7 +77,6 @@ import {MatTableModule} from '@angular/material/table';
     YouTubePlayerModule,
     MatProgressSpinnerModule,
     NgImageSliderModule,
-    MatTableModule,
 
   ],
   providers: [],
