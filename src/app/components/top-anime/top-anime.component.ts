@@ -35,6 +35,16 @@ interface IImage {
   mal_id: string;
 }
 
+// interface for anime ranks
+
+export interface IRank {
+  image_url: string;
+  title: string;
+  mal_id: string;
+  rank: number;
+  score: number;
+}
+
 @Component({
   selector: 'app-top-anime',
   templateUrl: './top-anime.component.html',
@@ -42,13 +52,19 @@ interface IImage {
 })
 export class TopAnimeComponent implements OnInit {
   public malId: string;
+  //
   public airing: IImage[] = [];
   public upcoming: IImage[] = [];
   public top: IAnime[] = [];
+  //
+  public ranks: IRank[] = [];
   private subAiring: Subscription;
   private subUpComping: Subscription;
-  displayedColumns: string[] = [ 'position',  'imageUrl', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  // displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'imageUrl'];
+  displayedColumns: string[] = ['rank', 'title', 'image_url'];
+  // dataSource = new MatTableDataSource(ELEMENT_DATA);
+  // dataSource = new MatTableDataSource(this.ranks);
+  dataSource;
 
   headerText: string;
 
@@ -61,11 +77,17 @@ export class TopAnimeComponent implements OnInit {
   }
 
 
-  constructor(private animeService: AnimeService) { }
+  constructor(private animeService: AnimeService) {
+  }
 
   ngOnInit(): void {
-    this.subAiring = this.animeService.getAnimeAiring().subscribe(x => this.airing = this.convert(x.top));
-    this.subUpComping = this.animeService.getAnimeUpcoming().subscribe(x => this.upcoming = this.convert(x.top));
+    // this.subAiring = this.animeService.getAnimeAiring().subscribe(x => this.airing = this.convert(x.top));
+    // this.subUpComping = this.animeService.getAnimeUpcoming().subscribe(x => this.upcoming = this.convert(x.top));
+    // this.ranks = this.animeService.getAnimeRanks2(10, this.ranks);
+    this.subUpComping = this.animeService.getAnimeRanks().subscribe(x => {
+      this.upcoming = this.convert(x.top);
+      this.dataSource = new MatTableDataSource(this.upcoming);
+    });
   }
 
   private convert(animes: IAnime[]): IImage[] {
@@ -78,4 +100,8 @@ export class TopAnimeComponent implements OnInit {
     return arr;
   }
 
+  // tslint:disable-next-line:use-lifecycle-interface
+  ngOnDestroy(): void {
+    this.subUpComping.unsubscribe();
+  }
 }
