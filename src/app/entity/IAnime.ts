@@ -13,4 +13,5 @@ export interface IAnime {
   end_date: string;
   members: number;
   rated: string;
+  rank: string;
 }
