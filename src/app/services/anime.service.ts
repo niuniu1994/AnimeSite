@@ -5,6 +5,7 @@ import {IResponse} from '../entity/IResponse';
 import {IAnimeDetailResponse} from '../entity/ianime-detail-response';
 import {IAnimeImageResponse} from '../entity/ianime-image-response';
 import {IResponse2} from '../entity/iresponse2';
+import {IResponseGenre} from '../entity/IResponseGenre';
 
 
 @Injectable({
@@ -63,5 +64,10 @@ export class AnimeService {
     const weekDay = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const url = `${this.baseUrl}/schedule/${weekDay[day.getDay()]}`;
     return this.httpClient.get<any>(url);
+  }
+
+  public searchAnimeByGenre(genre: string, page: string): Observable<IResponseGenre> {
+    const url = `${this.baseUrl}/genre/anime/${genre}/${page}`;
+    return this.httpClient.get<IResponseGenre>(url);
   }
 }
