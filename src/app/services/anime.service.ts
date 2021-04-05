@@ -5,6 +5,7 @@ import {IResponse} from '../entity/IResponse';
 import {IAnimeDetailResponse} from '../entity/ianime-detail-response';
 import {IAnimeImageResponse} from '../entity/ianime-image-response';
 import {IResponse2} from '../entity/iresponse2';
+import {IRank} from '../components/top-anime/top-anime.component';
 
 
 @Injectable({
@@ -69,5 +70,27 @@ export class AnimeService {
   public getAnimeRanks(): Observable<IResponse2> {
     const url = `${this.baseUrl}/top/anime/1`;
     return this.httpClient.get<IResponse2>(url);
+  }
+
+  // service for top anime
+  public getAnimeRanks2(n: number, ranking: IRank[]): IRank[] {
+    const url = `${this.baseUrl}/top/anime/1`;
+    // tslint:disable-next-line:prefer-const
+    const request = new XMLHttpRequest();
+    request.open('GET', url);
+    request.responseType = 'json';
+    request.send();
+    const response = request.response;
+    const anime = response.top;
+    for (let i = 0; i < n; i++) {
+      ranking[i].mal_id = anime[i].mal_id;
+      ranking[i].rank = anime[i].rank;
+      ranking[i].score = anime[i].score;
+      ranking[i].image_url = anime[i].image_url;
+      ranking[i].title = anime[i].title;
+      console.log(ranking[i].mal_id);
+    }
+    return ranking;
+    // return this.populateArray(n, response, ranking);
   }
 }
