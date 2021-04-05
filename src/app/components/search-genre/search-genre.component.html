@@ -1,13 +1,17 @@
-<div class="search_genre">
-  <div fxLayout="column" fxLayoutAlign=" center">
-    <mat-toolbar>
-      <mat-toolbar-row>
-        <mat-list-item *ngFor="let genre of genres2 | keyvalue">
-          <div *ngIf="genre.value" class="row-cols-md-1">
-            <button [routerLink]="['/list',genre.value]" routerLinkActive="active">{{genre.key}}</button>
-          </div>
-        </mat-list-item>
-      </mat-toolbar-row>
-    </mat-toolbar>
+<app-search></app-search>
+
+<div class="container">
+  <div class="separator-title-genre"></div>
+  <div class="search_genre">
+    <h2 class="separator-title">Genre</h2>
+    <div class="flexed-line"></div>
+    <div class="separator"></div>
+    <div fxLayout="row wrap" fxLayoutGap=" 16px grid">
+      <div fxFlex="20%" fxFlex.xs="100%" fxFlex.sm="33%"
+           *ngFor="let genre of genres2 | keyvalue">
+        <button [routerLink]="['/list',genre.value]" routerLinkActive="active">{{genre.key}}</button>
+      </div>
+    </div>
   </div>
+
 </div>
