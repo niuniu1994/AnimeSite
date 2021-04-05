@@ -32,6 +32,7 @@ import { HomeComponent } from './components/home/home.component';
 import {NgImageSliderModule} from 'ng-image-slider';
 import { FooterComponent } from './components/footer/footer.component';
 import { TopAnimeComponent } from './components/top-anime/top-anime.component';
+import { TopMovieComponent } from './components/top-movie/top-movie.component';
 import {MatTableModule} from '@angular/material/table';
 
 
@@ -48,6 +49,7 @@ import {MatTableModule} from '@angular/material/table';
     HomeComponent,
     FooterComponent,
     TopAnimeComponent,
+    TopMovieComponent
   ],
   imports: [
     MatDialogModule,
