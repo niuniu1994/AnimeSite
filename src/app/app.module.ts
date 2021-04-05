@@ -33,7 +33,7 @@ import {NgImageSliderModule} from 'ng-image-slider';
 import { FooterComponent } from './components/footer/footer.component';
 import {SearchGenreComponent} from './components/search-genre/search-genre.component';
 import { TopAnimeComponent } from './components/top-anime/top-anime.component';
-import {MatTableModule} from '@angular/material/table';
+import {TopMovieComponent} from './components/top-movie/top-movie.component';
 
 
 @NgModule({
@@ -49,7 +49,6 @@ import {MatTableModule} from '@angular/material/table';
     HomeComponent,
     FooterComponent,
     SearchGenreComponent,
-    TopAnimeComponent,
     TopAnimeComponent,
     TopMovieComponent,
     SearchGenreComponent
